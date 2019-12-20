@@ -9,5 +9,4 @@ app.listen(3000);
 app.on('request',(req,res)=>{
     bindRender(req,res);
     router(req,res);
-
 })

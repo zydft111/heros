@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Hero - Admin</title>
-  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
             <td>
               <a href="./info.html?id={{$value.id}}">查看</a>
               <a href="./edit.html?id={{$value.id}}">编辑</a>
-              <a href="javascript:void(0)" data-id="{{$value.id}}">删除</a>
+              <a href="javascript:void(0)" data-id="{{$value.id}}" class="del">删除</a>
             </td>
           </tr>
         {{/each}}
@@ -45,5 +45,26 @@
     </table>
   </div>
 </body>
-
+<script src="../node_modules/jQuery/dist/jquery.js"></script>
+<script>
+  $(function(){
+    $('.del').click(function(){
+    let id = $(this).data('id');
+    
+    $.ajax({
+      type: 'get',
+      url: '/deleteHero',
+      data: {
+        id : id
+      },
+      dataType: 'json',
+      success: function(res){
+        if(res.code == 200){
+          location.reload()
+        }
+      }
+    })
+  })
+  })
+</script>
 </html>

@@ -12,11 +12,17 @@ function router(req,res){
     if(method == 'GET' && (pathname == '/' || pathname == '/index' || pathname == '/index.html')){
         control.showIndex(req,res)
     }else if(method == 'GET' && (pathname =='/add' || pathname =='/add.html')){
-
-    }else if(method == 'GET' && (pathname =='/exit' || pathname =='/exit.html')){
-
+        control.showAdd(req,res)
+    }else if(method == 'GET' && (pathname =='/edit' || pathname =='/edit.html')){
+        control.showEdit(req,res)
     }else if(method == 'GET' && (pathname =='/info' || pathname =='/info.html')){
         control.showInfo(req,res)
+    }else if(method == 'GET' && pathname =='/deleteHero'){
+        control.removeHero(req,res)
+    }else if(method == 'POST' && pathname =='/editHero'){
+        control.editHero(req,res)
+    }else if(method == 'POST' && pathname =='/addHero'){
+        control.addHero(req,res)
     }else if(method == 'GET' && (pathname.startsWith('/node_modules'))){
         control.loadStatic(req,res)
     }else {
